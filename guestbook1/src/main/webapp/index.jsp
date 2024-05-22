@@ -44,11 +44,12 @@ List<GuestbookVo> list = dao.findAll();
 	<br>
 
 	<%
+	int count = list.size();
 	for (GuestbookVo vo : list) {
 	%>
 	<table width=510 border=1>
 		<tr>
-			<td><%=vo.getNo()%></td>
+			<td>[<%=count--%>]</td>
 			<td><%=vo.getName()%></td>
 			<td><%=vo.getRegDate()%></td>
 			<td>

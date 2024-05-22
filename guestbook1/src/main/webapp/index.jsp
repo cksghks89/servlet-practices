@@ -1,5 +1,15 @@
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@	page import="guestbook.dao.GuestbookDao"%>
+<%@ page import="guestbook.vo.GuestbookVo"%>
+<%@	page import="java.util.List"%>
 
+<%
+request.setCharacterEncoding("utf-8");
+
+GuestbookDao dao = new GuestbookDao();
+List<GuestbookVo> list = dao.findAll();
+%>
 
 <html>
 <head>
@@ -7,7 +17,7 @@
 <title>방명록</title>
 </head>
 <body>
-	<form action="" method="post">
+	<form action="add.jsp" method="post">
 		<table border=1 width=500>
 			<tr>
 				<td>이름</td>
@@ -26,24 +36,32 @@
 			</tr>
 			<tr>
 				<td colspan=4 align=right>
-					<input type="submit" VALUE=" 확인 ">
+					<input type="submit" value=" 확인 ">
 				</td>
 			</tr>
 		</table>
 	</form>
 	<br>
+
+	<%
+	for (GuestbookVo vo : list) {
+	%>
 	<table width=510 border=1>
 		<tr>
-			<td>[1]</td>
-			<td>안대혁</td>
-			<td>2013-01-15</td>
+			<td><%=vo.getNo()%></td>
+			<td><%=vo.getName()%></td>
+			<td><%=vo.getRegDate()%></td>
 			<td>
-				<a href="">삭제</a>
+				<a href="deleteform.jsp?no=<%=vo.getNo()%>">삭제</a>
 			</td>
 		</tr>
 		<tr>
-			<td colspan=4>안녕하세요</td>
+			<td colspan=4><%=vo.getContents()%></td>
 		</tr>
 	</table>
+	<%
+	}
+	%>
+
 </body>
 </html>

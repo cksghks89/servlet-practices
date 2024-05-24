@@ -11,16 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 public class HelloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public HelloServlet() {
-	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String id = request.getParameter("id");
 
-		response.setContentType("text/html;charset=utf-8");
+		response.setContentType("text/html; charset=utf-8");
 		PrintWriter pw = response.getWriter();
-		pw.println("<h1>안녕 " + id + "</h1>");		
+		pw.println("<h1>안녕 " + id + "</h1>");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

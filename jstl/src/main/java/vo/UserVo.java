@@ -1,4 +1,4 @@
-package jstlel;
+package vo;
 
 public class UserVo {
 	private Long no;
